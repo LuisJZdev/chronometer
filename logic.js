@@ -1,14 +1,31 @@
-const times = {
-    hour: document.getElementById("hour"),
-    minute: document.getElementById("minute"),
-    second: document.getElementById("second")
-};
-
-const selectedTimes = {
-    hour: document.getElementById("hour-select"),
-    minute: document.getElementById("minute-select"),
-    second: document.getElementById("second-select")
+function Times(hour, minute, second) {
+    this.hour = hour;
+    this.minute = minute;
+    this.second = second;
 }
+
+const times = new Times(
+    document.getElementById("hour"),
+    document.getElementById("minute"),
+    document.getElementById("second")
+) 
+
+console.log(times.hour.textContent);
+
+const selectedTimes = new Times(
+    document.getElementById("hour-select"),
+    document.getElementById("minute-select"),
+    document.getElementById("second-select")
+)
+
+const selectTimeButtons = new Times(
+    [document.getElementById("hour-backward"), document.getElementById("hour-forward")],
+    [document.getElementById("minute-backward"), document.getElementById("minute-forward")],
+    [document.getElementById("second-backward"), document.getElementById("second-forward")],
+) 
+
+
+const startStopButton = document.getElementById("start-stop-button");
 
 for (let i=0; i<60; i++) {
     selectedTimes.hour.innerHTML += "<option value=" + i + ">" + i + "</option>"
@@ -24,4 +41,8 @@ selectedTimes.minute.addEventListener("click", () => {
 })
 selectedTimes.second.addEventListener("click", () => {
     times.second.innerText = selectedTimes.second.value.length == 1? '0'+selectedTimes.second.value: selectedTimes.second.value;
+})
+
+startStopButton.addEventListener("click", () => {
+    startStopButton.innerText = startStopButton.textContent == "start"? "stop": "start";
 })
