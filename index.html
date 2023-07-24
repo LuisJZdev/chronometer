@@ -10,32 +10,36 @@
     <main>
         <section id="time-container">
             <section id="numbers-container">
-                <h2>00</h2>:
-                <h2>00</h2>:
-                <h2>00</h2>
+                <h2 id="hour">00</h2>:
+                <h2 id="minute">00</h2>:
+                <h2 id="second">00</h2>
             </section>
 
             <section id="buttons-container">
                 <section class="select-container"> 
                     <button><</button>
-                    <select name="hour" id="" type="">
+                    <select id="hour-select" id="" type="">
+                        <option value="0">0</option>
                         <option value="1">1</option>
+                        <option value="2">2</option>
                     </select>
                     <button>></button>
                 </section>
                 
                 <section class="select-container"> 
                     <button><</button>
-                    <select name="minute" id="" type="">
-                        <option value="">1</option>
+                    <select id="minute-select" id="" type="">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
                     </select>
                     <button>></button>
                 </section>
 
                 <section class="select-container"> 
                     <button><</button>
-                    <select name="second" id="" type="">
-                        <option value="">1</option>
+                    <select id="second-select" id="" type="">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
                     </select>
                     <button>></button>
                 </section>
