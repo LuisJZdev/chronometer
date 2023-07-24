@@ -44,5 +44,32 @@ selectedTimes.second.addEventListener("click", () => {
 })
 
 startStopButton.addEventListener("click", () => {
-    startStopButton.innerText = startStopButton.textContent == "start"? "stop": "start";
+
+    if (startStopButton.textContent == "start") {
+        startStopButton.innerText = "stop";
+
+        for (selectedTime in selectedTimes) {
+            selectedTimes[selectedTime].disabled = true;
+        }
+        for (selectedButton in selectTimeButtons) {
+            selectTimeButtons[selectedButton][0].disabled = true;
+            selectTimeButtons[selectedButton][1].disabled = true;
+        }
+
+
+    } else {
+        startStopButton.innerText = "start";
+
+        for (selectedTime in selectedTimes) {
+            selectedTimes[selectedTime].disabled = false;
+        }
+        for (selectedButton in selectTimeButtons) {
+            selectTimeButtons[selectedButton][0].disabled = false;
+            selectTimeButtons[selectedButton][1].disabled = false;
+        }
+
+    }
+
+
+
 })
