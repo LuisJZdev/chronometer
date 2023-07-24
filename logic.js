@@ -81,6 +81,28 @@ startStopButton.addEventListener("click", () => {
             selectTimeButtons[selectedButton][1].disabled = true;
         }
 
+        function miFuncion() {
+            console.log('Ejecutando una iteración del bucle.');
+            // Coloca aquí el código que deseas ejecutar en cada iteración del bucle.
+        }
+          
+        // Definir el tiempo total que deseas que dure el bucle (en milisegundos)
+        const tiempoTotal = 5000; // 5000 milisegundos = 5 segundos
+          
+        // Definir el intervalo de tiempo entre cada iteración del bucle (en milisegundos)
+        const intervalo = 1000; // 1000 milisegundos = 1 segundo
+          
+        // Función para detener el bucle después del tiempo total
+        function detenerBucle() {
+        clearInterval(intervalID);
+        console.log('El bucle ha terminado.');
+        }
+          
+        // Iniciar el bucle utilizando setInterval
+        const intervalID = setInterval(miFuncion, intervalo);
+          
+        // Establecer un temporizador para detener el bucle después del tiempo total
+        setTimeout(detenerBucle, tiempoTotal);
 
     } else {
         startStopButton.innerText = "start";
