@@ -43,6 +43,31 @@ selectedTimes.second.addEventListener("click", () => {
     times.second.innerText = selectedTimes.second.value.length == 1? '0'+selectedTimes.second.value: selectedTimes.second.value;
 })
 
+selectTimeButtons.hour[0].addEventListener("click", () => {
+    selectedTimes.hour.value = selectedTimes.hour.value == 0? 59: selectedTimes.hour.value - 1;
+    times.hour.innerText = selectedTimes.hour.value.length == 1? '0'+selectedTimes.hour.value: selectedTimes.hour.value;
+})
+selectTimeButtons.hour[1].addEventListener("click", () => {
+    selectedTimes.hour.value = selectedTimes.hour.value == 59? 0: Number(selectedTimes.hour.value) + 1;
+    times.hour.innerText = selectedTimes.hour.value.length == 1? '0'+selectedTimes.hour.value: selectedTimes.hour.value;
+})
+selectTimeButtons.minute[0].addEventListener("click", () => {
+    selectedTimes.minute.value = selectedTimes.minute.value == 0? 59: selectedTimes.minute.value - 1;
+    times.minute.innerText = selectedTimes.minute.value.length == 1? '0'+selectedTimes.minute.value: selectedTimes.minute.value;
+})
+selectTimeButtons.minute[1].addEventListener("click", () => {
+    selectedTimes.minute.value = selectedTimes.minute.value == 59? 0: Number(selectedTimes.minute.value) + 1;
+    times.minute.innerText = selectedTimes.minute.value.length == 1? '0'+selectedTimes.minute.value: selectedTimes.minute.value;
+})
+selectTimeButtons.second[0].addEventListener("click", () => {
+    selectedTimes.second.value = selectedTimes.second.value == 0? 59: selectedTimes.second.value - 1;
+    times.second.innerText = selectedTimes.second.value.length == 1? '0'+selectedTimes.second.value: selectedTimes.second.value;
+})
+selectTimeButtons.second[1].addEventListener("click", () => {
+    selectedTimes.second.value = selectedTimes.second.value == 59? 0: Number(selectedTimes.second.value) + 1;
+    times.second.innerText = selectedTimes.second.value.length == 1? '0'+selectedTimes.second.value: selectedTimes.second.value;
+})
+
 startStopButton.addEventListener("click", () => {
 
     if (startStopButton.textContent == "start") {
