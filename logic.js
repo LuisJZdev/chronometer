@@ -10,13 +10,11 @@ const selectedTimes = {
     second: document.getElementById("second-select")
 }
 
-console.log(times.hour);
-console.log(times.minute);
-console.log(times.second.textContent);
-
-console.log(selectedTimes.hour);
-console.log(selectedTimes.minute);
-console.log(selectedTimes.second);
+for (let i=0; i<60; i++) {
+    selectedTimes.hour.innerHTML += "<option value=" + i + ">" + i + "</option>"
+    selectedTimes.minute.innerHTML += "<option value=" + i + ">" + i + "</option>"
+    selectedTimes.second.innerHTML += "<option value=" + i + ">" + i + "</option>"
+}
 
 selectedTimes.hour.addEventListener("click", () => {
     times.hour.innerText = selectedTimes.hour.value.length == 1? '0'+selectedTimes.hour.value: selectedTimes.hour.value;
