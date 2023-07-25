@@ -67,7 +67,8 @@ selectTimeButtons.second[1].addEventListener("click", () => {
     selectTimes.second.value = selectTimes.second.value == 59? 0: Number(selectTimes.second.value) + 1;
     times.second.innerText = selectTimes.second.value.length == 1? '0'+selectTimes.second.value: selectTimes.second.value;
 })
-
+let globalIntervalID = undefined;
+let globalTimeout = undefined;
 startStopButton.addEventListener("click", () => {
 
     if (startStopButton.textContent == "start") {
@@ -140,8 +141,8 @@ startStopButton.addEventListener("click", () => {
           
     
         const intervalID = setInterval(miFuncion, intervalo);
-
-        setTimeout(detenerBucle, totalTime);
+        globalIntervalID = intervalID;
+        globalTimeout = setTimeout(detenerBucle, totalTime);
 
     } else {
         startStopButton.innerText = "start";
@@ -153,7 +154,8 @@ startStopButton.addEventListener("click", () => {
             selectTimeButtons[selectedButton][0].disabled = false;
             selectTimeButtons[selectedButton][1].disabled = false;
         }
-
+        clearInterval(globalIntervalID);
+        clearTimeout(globalTimeout);
     }
 
 
