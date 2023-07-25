@@ -12,7 +12,7 @@ const times = new Times(
 
 console.log(times.hour.textContent);
 
-const selectedTimes = new Times(
+const selectTimes = new Times(
     document.getElementById("hour-select"),
     document.getElementById("minute-select"),
     document.getElementById("second-select")
@@ -28,44 +28,44 @@ const selectTimeButtons = new Times(
 const startStopButton = document.getElementById("start-stop-button");
 
 for (let i=0; i<60; i++) {
-    selectedTimes.hour.innerHTML += "<option value=" + i + ">" + i + "</option>"
-    selectedTimes.minute.innerHTML += "<option value=" + i + ">" + i + "</option>"
-    selectedTimes.second.innerHTML += "<option value=" + i + ">" + i + "</option>"
+    selectTimes.hour.innerHTML += "<option value=" + i + ">" + i + "</option>"
+    selectTimes.minute.innerHTML += "<option value=" + i + ">" + i + "</option>"
+    selectTimes.second.innerHTML += "<option value=" + i + ">" + i + "</option>"
 }
 
-selectedTimes.hour.addEventListener("click", () => {
-    times.hour.innerText = selectedTimes.hour.value.length == 1? '0'+selectedTimes.hour.value: selectedTimes.hour.value;
+selectTimes.hour.addEventListener("click", () => {
+    times.hour.innerText = selectTimes.hour.value.length == 1? '0'+selectTimes.hour.value: selectTimes.hour.value;
 })
-selectedTimes.minute.addEventListener("click", () => {
-    times.minute.innerText = selectedTimes.minute.value.length == 1? '0'+selectedTimes.minute.value: selectedTimes.minute.value;
+selectTimes.minute.addEventListener("click", () => {
+    times.minute.innerText = selectTimes.minute.value.length == 1? '0'+selectTimes.minute.value: selectTimes.minute.value;
 })
-selectedTimes.second.addEventListener("click", () => {
-    times.second.innerText = selectedTimes.second.value.length == 1? '0'+selectedTimes.second.value: selectedTimes.second.value;
+selectTimes.second.addEventListener("click", () => {
+    times.second.innerText = selectTimes.second.value.length == 1? '0'+selectTimes.second.value: selectTimes.second.value;
 })
 
 selectTimeButtons.hour[0].addEventListener("click", () => {
-    selectedTimes.hour.value = selectedTimes.hour.value == 0? 59: selectedTimes.hour.value - 1;
-    times.hour.innerText = selectedTimes.hour.value.length == 1? '0'+selectedTimes.hour.value: selectedTimes.hour.value;
+    selectTimes.hour.value = selectTimes.hour.value == 0? 59: selectTimes.hour.value - 1;
+    times.hour.innerText = selectTimes.hour.value.length == 1? '0'+selectTimes.hour.value: selectTimes.hour.value;
 })
 selectTimeButtons.hour[1].addEventListener("click", () => {
-    selectedTimes.hour.value = selectedTimes.hour.value == 59? 0: Number(selectedTimes.hour.value) + 1;
-    times.hour.innerText = selectedTimes.hour.value.length == 1? '0'+selectedTimes.hour.value: selectedTimes.hour.value;
+    selectTimes.hour.value = selectTimes.hour.value == 59? 0: Number(selectTimes.hour.value) + 1;
+    times.hour.innerText = selectTimes.hour.value.length == 1? '0'+selectTimes.hour.value: selectTimes.hour.value;
 })
 selectTimeButtons.minute[0].addEventListener("click", () => {
-    selectedTimes.minute.value = selectedTimes.minute.value == 0? 59: selectedTimes.minute.value - 1;
-    times.minute.innerText = selectedTimes.minute.value.length == 1? '0'+selectedTimes.minute.value: selectedTimes.minute.value;
+    selectTimes.minute.value = selectTimes.minute.value == 0? 59: selectTimes.minute.value - 1;
+    times.minute.innerText = selectTimes.minute.value.length == 1? '0'+selectTimes.minute.value: selectTimes.minute.value;
 })
 selectTimeButtons.minute[1].addEventListener("click", () => {
-    selectedTimes.minute.value = selectedTimes.minute.value == 59? 0: Number(selectedTimes.minute.value) + 1;
-    times.minute.innerText = selectedTimes.minute.value.length == 1? '0'+selectedTimes.minute.value: selectedTimes.minute.value;
+    selectTimes.minute.value = selectTimes.minute.value == 59? 0: Number(selectTimes.minute.value) + 1;
+    times.minute.innerText = selectTimes.minute.value.length == 1? '0'+selectTimes.minute.value: selectTimes.minute.value;
 })
 selectTimeButtons.second[0].addEventListener("click", () => {
-    selectedTimes.second.value = selectedTimes.second.value == 0? 59: selectedTimes.second.value - 1;
-    times.second.innerText = selectedTimes.second.value.length == 1? '0'+selectedTimes.second.value: selectedTimes.second.value;
+    selectTimes.second.value = selectTimes.second.value == 0? 59: selectTimes.second.value - 1;
+    times.second.innerText = selectTimes.second.value.length == 1? '0'+selectTimes.second.value: selectTimes.second.value;
 })
 selectTimeButtons.second[1].addEventListener("click", () => {
-    selectedTimes.second.value = selectedTimes.second.value == 59? 0: Number(selectedTimes.second.value) + 1;
-    times.second.innerText = selectedTimes.second.value.length == 1? '0'+selectedTimes.second.value: selectedTimes.second.value;
+    selectTimes.second.value = selectTimes.second.value == 59? 0: Number(selectTimes.second.value) + 1;
+    times.second.innerText = selectTimes.second.value.length == 1? '0'+selectTimes.second.value: selectTimes.second.value;
 })
 
 startStopButton.addEventListener("click", () => {
@@ -73,42 +73,75 @@ startStopButton.addEventListener("click", () => {
     if (startStopButton.textContent == "start") {
         startStopButton.innerText = "stop";
 
-        for (selectedTime in selectedTimes) {
-            selectedTimes[selectedTime].disabled = true;
+        for (selectedTime in selectTimes) {
+            selectTimes[selectedTime].disabled = true;
         }
         for (selectedButton in selectTimeButtons) {
             selectTimeButtons[selectedButton][0].disabled = true;
             selectTimeButtons[selectedButton][1].disabled = true;
         }
 
+        let hour = Number(times.hour.textContent);
+        let minute = Number(times.minute.textContent);
+        let second = Number(times.second.textContent);
+
+        console.log(second)
+
+        let totalTime = (second*1000) + (minute*60000) + (hour*3600000);
+        let totalTimeToPrint = new Times(hour, minute, second);
+
+        console.log(totalTime)
+
         function miFuncion() {
-            console.log('Ejecutando una iteración del bucle.');
-            // Coloca aquí el código que deseas ejecutar en cada iteración del bucle.
+            if (totalTimeToPrint.second == 0) {
+
+                if (totalTimeToPrint.minute != 0) {
+                    totalTimeToPrint.minute -= 1;
+                    times.minute.innerText = totalTimeToPrint.minute < 10? '0'+String(totalTimeToPrint.minute): totalTimeToPrint.minute;
+
+                    totalTimeToPrint.second = 59;
+                    times.second.innerText = 59;
+                } // else {
+                    
+                //     if (hour != 0) {
+                //         hour -= 1;
+                //         times.hour.innerText = totalTimeToPrint < 10? '0'+String(totalTimeToPrint): totalTimeToPrint;
+                //     }
+
+                // }
+
+            } else {
+
+                totalTimeToPrint.second -= 1;
+                times.second.innerText = totalTimeToPrint.second < 10? '0'+String(totalTimeToPrint.second): totalTimeToPrint.second;
+            }
+
+            
         }
+        
+        
+
+        // const tiempoTotal = 5000; 
           
-        // Definir el tiempo total que deseas que dure el bucle (en milisegundos)
-        const tiempoTotal = 5000; // 5000 milisegundos = 5 segundos
+    
+        const intervalo = 1000;
           
-        // Definir el intervalo de tiempo entre cada iteración del bucle (en milisegundos)
-        const intervalo = 1000; // 1000 milisegundos = 1 segundo
-          
-        // Función para detener el bucle después del tiempo total
+        
         function detenerBucle() {
-        clearInterval(intervalID);
-        console.log('El bucle ha terminado.');
+            clearInterval(intervalID);
+            console.log('El bucle ha terminado.');
         }
           
-        // Iniciar el bucle utilizando setInterval
+    
         const intervalID = setInterval(miFuncion, intervalo);
-          
-        // Establecer un temporizador para detener el bucle después del tiempo total
-        setTimeout(detenerBucle, tiempoTotal);
+
+        setTimeout(detenerBucle, totalTime);
 
     } else {
         startStopButton.innerText = "start";
 
-        for (selectedTime in selectedTimes) {
-            selectedTimes[selectedTime].disabled = false;
+        for (selectedTime in selectTimes) {
+            selectTimes[selectedTime].disabled = false;
         }
         for (selectedButton in selectTimeButtons) {
             selectTimeButtons[selectedButton][0].disabled = false;
