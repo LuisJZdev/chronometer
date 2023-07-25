@@ -101,14 +101,20 @@ startStopButton.addEventListener("click", () => {
 
                     totalTimeToPrint.second = 59;
                     times.second.innerText = 59;
-                } // else {
+                } else {
                     
-                //     if (hour != 0) {
-                //         hour -= 1;
-                //         times.hour.innerText = totalTimeToPrint < 10? '0'+String(totalTimeToPrint): totalTimeToPrint;
-                //     }
+                    if (totalTimeToPrint.hour != 0) {
+                        totalTimeToPrint.hour -= 1;
+                        times.hour.innerText = totalTimeToPrint.hour < 10? '0'+String(totalTimeToPrint.hour): totalTimeToPrint.hour;
 
-                // }
+                        totalTimeToPrint.minute = 59;
+                        times.minute.innerText = 59;
+
+                        totalTimeToPrint.second = 59;
+                        times.second.innerText = 59;
+                    }
+
+                }
 
             } else {
 
