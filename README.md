@@ -1,2 +1,2 @@
 # chronometer
-simple chronometer made in javascript
+simple chronometer made with javascript
